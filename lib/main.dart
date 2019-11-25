@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:badges/badges.dart';
+import 'package:foodtracker/views/account.dart';
+import 'package:foodtracker/views/restaurants.dart';
+import 'package:foodtracker/views/home.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,7 +29,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _page = 0;
+  int _currentPage = 0;
+  final List<Widget> _childrens = [
+    Home(),
+    Restaurants(),
+    Account()    
+  ];
+
+  void onTabTapped(int index){
+    setState(() {
+      _currentPage = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,12 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
             selectedItemIconColor: Colors.white,
             selectedItemLabelColor: Colors.black,
             showSelectedItemShadow: true),
-        selectedIndex: _page,
-        onSelectTab: (index) {
-          setState(() {
-            _page = index;
-          });
-        },
+        selectedIndex: _currentPage,
+        onSelectTab: onTabTapped,
         items: [
           FFNavigationBarItem(
             iconData: Icons.home,
@@ -75,12 +85,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
-        ),
-      ),
+      body:Center(
+        child: _childrens[_currentPage],
+      )
     );
   }
 }

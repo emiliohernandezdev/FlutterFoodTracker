@@ -1,6 +1,6 @@
-# walmartapp
+# foodtrackerapp
 
-Walmart
+FoodTracker
 
 ## Getting Started
 
