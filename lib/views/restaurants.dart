@@ -1,8 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:foodtracker/models/restaurant.dart';
+import 'package:foodtracker/views/glovo.dart';
 
 class Restaurants extends StatefulWidget {
   @override
@@ -128,7 +128,7 @@ class _RestaurantsState extends State<Restaurants> {
             title: Text("Llamar al restaurante"),
             subtitle: Text("Comunícate para pedir más información."),
             onTap: (){
-              print('On Glovo');
+              print("Llamando...");
             },
           ),
           ListTile(
@@ -139,7 +139,7 @@ class _RestaurantsState extends State<Restaurants> {
             title: Text("Pedir por Glovo"),
             subtitle: Text("Enviaremos tu pedido con un Glover"),
             onTap: (){
-              print('On Glovo');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Glovo()));
             },
           ),
 
